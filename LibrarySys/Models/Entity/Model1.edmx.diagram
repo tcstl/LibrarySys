@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="defa043c449640fd98815ce461e1fce6" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="LibSysModel.Author" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibSysModel.Book" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibSysModel.Employee" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibSysModel.Genre" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibSysModel.News" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibSysModel.Publisher" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibSysModel.Reader" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibSysModel.ReaderBorrow" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibSysModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="LibSysModel.FK_Book_Author" />
+        <AssociationConnector Association="LibSysModel.FK_Book_Genre" />
+        <AssociationConnector Association="LibSysModel.FK_Book_Publisher" />
+        <AssociationConnector Association="LibSysModel.FK_ReaderBorrow_Book" />
+        <AssociationConnector Association="LibSysModel.FK_News_Employee" />
+        <AssociationConnector Association="LibSysModel.FK_ReaderBorrow_Employee" />
+        <AssociationConnector Association="LibSysModel.FK_ReaderBorrow_Reader" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

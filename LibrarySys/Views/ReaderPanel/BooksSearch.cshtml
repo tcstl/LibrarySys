@@ -1,0 +1,84 @@
+﻿@using LibrarySys.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+
+@model IEnumerable<Book>
+@{
+    ViewBag.Title = "BooksSearch";
+    Layout = "~/Views/Shared/LayoutReader.cshtml";
+}
+
+<html>
+<body>
+
+    <section class="main-content">
+        <div class="container">
+            <h1 style="text-align:center; font-style:italic"> Книги </h1>
+            <br />
+
+            @using (Html.BeginForm("BooksSearch", "ReaderPanel", FormMethod.Get))
+            {
+                <div style="margin-bottom:15px; margin-top:15px">
+                    <ion-icon name="search-outline">   </ion-icon> &nbsp @Html.TextBox("s")
+                    <input type="submit" value="Търсене" class="btn btn-primary btn-sm" />
+                </div>
+            }
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th> # </th>
+                        <th> Заглавие </th>
+                        <th> Автор </th>
+                        <th>  Жанр</th>
+                        <th> Година </th>
+                        <th> Издателство </th>
+                        <th> Страници </th>
+                        <th> Брой </th>
+                        <th> Наличност </th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var bk in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td> @bk.ID_book </td>
+                            <td> @bk.Title </td>
+                            <td> @bk.Author.FirstName&nbsp @bk.Author.LastName</td>
+                            <td> @bk.Genre.name </td>
+                            <td> @bk.Year </td>
+                            <td> @bk.Publisher.name </td>
+                            <td> @bk.Pages </td>
+                            <td> @bk.Stock </td>
+                            <td class=" text-center">
+                                @if (@bk.Available == true)
+                                {<span class="active-circle bg-success"></span> }
+                                else
+                                {<span class="active-circle bg-danger "></span>}
+                            </td>
+
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </section>
+    <div>
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("BooksSearch", new { page }))
+    </div>
+</body>
+</html>
+
+
+
+
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/Content/table style.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />

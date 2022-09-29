@@ -1,0 +1,100 @@
+﻿@using LibrarySys.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList<News>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<html>
+<body>
+    <section class="main-content">
+        <div class="container">
+            <h1 style="text-align:center; font-style:italic">Новини</h1>
+            <br />
+
+            @using (Html.BeginForm("Index", "News", FormMethod.Get))
+            {
+                <div style="margin-bottom:15px; margin-top:15px">
+                    <ion-icon name="search-outline">   </ion-icon> &nbsp @Html.TextBox("s")
+                    <input type="submit" value="Търсене" class="btn btn-primary btn-sm" />
+                </div>
+            }
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th># </th>
+                        <th>Тема</th>
+                        <th>Дата</th>
+                        <th> Статус </th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+
+                @foreach (var i in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@i.ID_news</td>
+
+
+                            <td>@i.Subject</td>
+                            <td>@Convert.ToDateTime(i.Date).ToString("dd/MM/yyyy")</td>
+
+                            <td class=" text-center">
+                                @if (i.Screen == true)
+                                {
+                                    <span class="active-circle bg-success"></span>
+                                }
+                                else
+
+                                {
+                                    <span class="active-circle bg-danger "></span>
+                                }
+                            </td>
+
+                            <td>
+                                <div class="dropdown open">
+                                    <a href="#!" class="px-2" id="triggerId3" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="triggerId3">
+
+                                        <a class="dropdown-item" href="~/News/DetailNews/@i.ID_news"><i class="fa fa-pencil mr-1"></i> Актуализиране</a>
+
+                                        <a class="dropdown-item text-danger" href="~/News/DeleteNews/@i.ID_news" onclick="return confirm('Искатели да изтриете записа окончателно')"><i class="fa fa-trash mr-1"></i> Изтриване</a>
+
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                }
+
+
+            </table>
+        </div>
+    </section>
+
+    <div>
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+    </div>
+
+    <a href="~/News/AddNews/" class="btn btn-primary btn-sm">Добави</a>
+
+</body>
+</html>
+
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/Content/table style.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+

@@ -1,0 +1,239 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Стива Библиотека</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+    <link href="~/Content/StartPage/style.css" rel="stylesheet" />
+
+    @*<link href="~/Content/StartPage/owl.carousel.min.css" rel="stylesheet" />
+        <link href="~/Content/StartPage/owl.theme.default.min.css" rel="stylesheet" />*@
+
+    <link href="~/Content/StartPage/font-awesome.min.css" rel="stylesheet" />
+
+    <link type="image" rel="icon" href="~/Libraryicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,600i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,500i,600,600i" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav>
+        <div class="container">
+            <div class="menu-par">
+                <div class="logo-par">
+                    <a href="~/Home/Index/">
+                        <h2>Стима Библиотека</h2>
+                    </a>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a class="menu_hover" href="~/Home/Index">Начало</a></li>
+                        <li><a class="menu_hover" href="#forus">За нас</a></li>
+                        <li><a class="menu_hover" href="#galeri">Галерия</a></li>
+                        <li><a class="menu_hover" href="#help">Помощ</a></li>
+                        <li><a class="menu_hover" href="~/LoginRegister/Register/">Регистрация</a></li>
+                        <li><a class="menu_hover" href="~/LoginRegister/Login/">Вход</a></li>
+                    </ul>
+                </div>
+                <div class="toggle-btn">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="conatiner">
+            <div class="home_header_info">
+                <h1 class="typewrite" data-period="2000" data-type='[ "Когато четеш хубава книга, една врата се отваря, за да даде път на повече светлина." ]'></h1>
+                <p> Добре дошли! </p>
+                <a href="~/LoginRegister/Login/"> Вход </a>
+            </div>
+        </div>
+        <div class="video">
+            <video id="video" autoplay loop muted>
+                <source type="video/mp4" src="~/Content/StartPage/220302_04_Books_SM_4k_020.mp4" />
+            </video>
+        </div>
+    </header>
+
+    <Section id="welcome_Sec">
+        <div class="container" id="forus">
+            <h2><span>Нашата библиотека</span></h2>
+            <p> Ще намерите книгата, която си търсите</p>
+        </div>
+    </Section>
+
+    <Section id="slides_parent">
+        <div class="container">
+            <div class="slides">
+                <div class="slide_1">
+                    <div class="slide_info">
+                        <p>Книги: @ViewBag.d7</p>
+                    </div>
+                </div>
+
+                <div class="slide_1 slide_2">
+                    <div class="slide_info">
+                        <p> Прочетени книги: @ViewBag.d9</p>
+                    </div>
+                </div>
+
+                <div class="slide_1 slide_3">
+                    <div class="slide_info">
+                        <p>Служители: @ViewBag.d11</p>
+                    </div>
+                </div>
+                <div class="slide_1 slide_4">
+                    <div class="slide_info">
+                        <p>Читатели: @ViewBag.d8</p>
+                    </div>
+                </div>
+                <div class="slide_1 slide_5">
+                    <div class="slide_info">
+                        <p> Книги от цял свят</p>
+                    </div>
+                </div>
+                <div class="slide_1 slide_6">
+                    <div class="slide_info">
+                        <p>Книти на различни езици</p>
+                    </div>
+                </div>
+                <div class="slide_1 slide_7">
+                    <div class="slide_info">
+                        <p>Любезен персонал</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Section>
+
+
+
+    <section id="fiji-holyday">
+        <div class="container" id="galeri">
+            <h3>Книги </h3>
+            <div class="owl-carousel owl-theme">
+            </div>
+        </div>
+    </section>
+    <section id="gallery" style="margin-top: 25px;">
+        <div class="container">
+            <div class="row">
+                <div class="filter-gal-par">
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+                        <img src="~/Content/StartPage/книги/14746.jpg" class="img-responsive" />
+
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
+                        <img src="~/Content/StartPage/книги/2112042396.jpg" class="img-responsive" />
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+                        <img src="~/Content/StartPage/книги/2112042400.jpg" class="img-responsive" />
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
+                        <img src="~/Content/StartPage/книги/2112042403.jpg" class="img-responsive" />
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
+                        <img src="~/Content/StartPage/книги/book1-cover copy1559129456.3316.jpg" class="img-responsive" />
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
+                        <img src="~/Content/StartPage/книги/drugiyat-tvardi-koritsi-30.jpg" class="img-responsive" />
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
+                        <img src="~/Content/StartPage/книги/imaloednomeche_412_614.jpg" class="img-responsive" />
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+                        <img src="~/Content/StartPage/книги/Princ_Hard_cov_316x.jpg" class="img-responsive" />
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
+                        <img src="~/Content/StartPage/книги/97895427212911512379180.809.jpg" class="img-responsive" />
+
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
+                        <img src="~/Content/StartPage/книги/cefae82b1c29421d4abff633ebeb8e8b.jpg" class="img-responsive" />
+
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
+                        <img src="~/Content/StartPage/книги/Glina_cov.jpg" class="img-responsive" />
+                    </div>
+
+                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
+                        <img src="~/Content/StartPage/книги/3310282.jpg" class="img-responsive" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" id="help">
+            <div class="footer-par">
+                <div class="footer-1">
+                    <h2>За нас</h2>
+                </div>
+                <div class="footer-2 fot-info">
+                    <h3> Адрес:</h3>
+                    <ul>
+                        <li><a href="#"> Варна, България <br /> ул. Борова Гора, №13e </a></li>
+                        <li><a href="#"> Имейл: <br /> stima_library@gmail.com </a></li>
+                        <li><a href="#"> Телефон: <br /> 0899824141 </a></li>
+                    </ul>
+                </div>
+                <div class="footer-3 fot-info">
+                    <h3>Последвайте ни в:</h3>
+                    <ul>
+                        <li><a href="#"> <i class="fa fa-facebook-f"></i>Instagram</a></li>
+                        <li><a href="#"> <i class="fa fa-facebook-f"></i>Facebook</a></li>
+                        <li><a href="#"> <i class="fa fa-twitter"></i> Twitter </a></li>
+                    </ul>
+                </div>
+                <div class="footer-4 fot-info">
+
+                    <ul>
+                        <li>
+                            Вход за
+                            <a href="~/LoginRegister/Login/">ЧИТАТЕЛИ</a>.
+                        </li>
+
+                        <li>
+                            Вход за
+                            <a href="~/AdminLogin/Login/">СЛУЖИТЕЛИ</a>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">Copyright ©Стима Библиотека</p>
+    </footer>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/StartPage/extrenaljq.js"></script>
+    <script src="~/Content/StartPage/owl.carousel.min.js"></script>
+
+
+</body>
+
+</html>
+

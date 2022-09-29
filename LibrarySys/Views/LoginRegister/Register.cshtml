@@ -1,0 +1,122 @@
+﻿@model LibrarySys.Models.Entity.Reader
+@{
+    
+
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Библиотека Стима Регистрация </title>
+    <!-- meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" />
+    <!-- /meta tags -->
+    <!-- custom style sheet -->
+    <link href="~/Content/Login/css/styleregister.css" rel="stylesheet" type="text/css" />
+    <!-- /custom style sheet -->
+    <!-- fontawesome css -->
+    <link href="~/Content/Login/css/fontawesome-all.css" rel="stylesheet" />
+    <!-- /fontawesome css -->
+    <!-- google fonts-->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <!-- /google fonts-->
+
+</head>
+
+
+<body>
+    <h1>Библиотека Стима </h1>
+    <div class="login-form">
+        <h2>Регистрация </h2>
+        <form action="#" method="post">
+
+            <div class=" form-group">
+                <label>Име:</label>
+                <div class="group">
+                    <i class="fas fa-user"></i>
+                    @* <input type="text" class="form-control" placeholder="Име:" required="required" name="FirstName" />*@
+                    @Html.TextBoxFor(r => r.FirstName, new { @class = "form-control", @placeholder = "Въведи име" })
+                </div> @Html.ValidationMessageFor(p => p.FirstName, "", new { @style = "color:red" })
+            </div>
+
+            <div class=" form-group">
+                <label>Фамилия:</label>
+                <div class="group">
+                    <i class="fas fa-user"></i>
+                    @*  <input type="text" class="form-control" placeholder="Фамилия:" required="required" name="LastName" />*@
+                    @Html.TextBoxFor(r => r.LastName, new { @class = "form-control", @placeholder = "Въведи фамилия" })
+                </div> @Html.ValidationMessageFor(p => p.LastName, "", new { @style = "color:red" })
+            </div>
+
+            <div class="form-group">
+                <label>Имейл:</label>
+                <div class="group">
+                    <i class="fas fa-user"></i>
+                    @*   <input type="text" class="form-control" placeholder="Имейл:" required="required" name="Email" />*@
+                    @Html.TextBoxFor(r => r.Email, new { @class = "form-control", @placeholder = "Въведи имейл" })
+                </div>@Html.ValidationMessageFor(p => p.Email, "", new { @style = "color:red" })<div style="color:red"> @ViewBag.error </div>
+            </div>
+
+            <div class=" form-group">
+                <label>Парола:</label>
+                <div class="group">
+                    <i class="fas fa-unlock"></i>
+                    @*<input type="password" class="form-control" placeholder="Парола:" required="required" name="Password" />*@
+                    @Html.TextBoxFor(r => r.Password, new { @type = "password", @id = "pass", @class = "form-control", @placeholder = "Въведи парола" })
+                </div>@Html.ValidationMessageFor(p => p.Password, "", new { @style = "color:red" })<input type="checkbox" onclick="showhide()" class="col-form-label" /> Покажи/Скрий парола
+
+            </div>
+
+            <div class="form-group">
+                <label>Училище:</label>
+                <div class="group">
+                    <i class="fas fa-user"></i>
+                    @*   <input type="text" class="form-control" placeholder="Имейл:" required="required" name="Email" />*@
+                    @Html.TextBoxFor(r => r.School, new { @class = "form-control", @placeholder = "Въведи училище" })
+                </div>@Html.ValidationMessageFor(p => p.School, "", new { @style = "color:red" })
+            </div>
+
+            <div class="form-group">
+                <label>Телефонен номер:</label>
+                <div class="group">
+                    <i class="fas fa-user"></i>
+                    @*   <input type="text" class="form-control" placeholder="Имейл:" required="required" name="Email" />*@
+                    @Html.TextBoxFor(r => r.PhoneNumber, new { @class = "form-control", @placeholder = "Въведи телефонен номер" })
+                </div>@Html.ValidationMessageFor(p => p.PhoneNumber, "", new { @style = "color:red" })
+            </div>
+
+            <input type="hidden" name="Activate" value="True" />
+
+            <div class="clear"> </div>
+            <label class="checkbox"><input type="checkbox" name="checkbox"><i> Съгласявам се с </i> <a href="#">Terms and Conditions</a></label>
+            <button type="submit" value="Register"> Регистрация</button>
+        </form>
+        <p class="register-p">Към вход<a href="~/LoginRegister/Login" class="register"> Тук</a></p>
+
+    </div>
+    <footer>
+        <p class="copyright-agileinfo"> &copy;2022 Всички права са запазени  <a href="~/Home/Index" target="_blank"> Стима Библоетека </a></p>
+    </footer>
+
+</body>
+
+</html>
+
+
+
+<script>
+    function showhide() {
+        var x = document.getElementById("pass");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>

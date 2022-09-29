@@ -1,0 +1,21 @@
+﻿@using LibrarySys.Models.Entity
+@model List<News>
+
+@foreach (var n in Model.Where(x => x.Screen == true).ToList())
+{
+    <div class="post">
+        <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="~/Content/Panel/books.png" alt="user image">
+            <span class="username">
+                <a href="#">@n.ID_news</a>
+                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+            </span>
+            <span class="description">@Convert.ToDateTime(n.Date).ToString("dd/MM/yyyy")</span>
+        </div>
+        <!-- /.user-block -->
+        <p>
+            @n.Article
+        </p>
+    </div>
+}
+

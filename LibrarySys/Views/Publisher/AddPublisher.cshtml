@@ -1,0 +1,54 @@
+﻿@model LibrarySys.Models.Entity.Publisher
+@{
+    ViewBag.Title = "AddPublisher";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<html>
+
+
+
+<body>
+
+    <div class="content">
+
+        <div class="container">
+            <div class="row align-items-stretch no-gutters input-wrap">
+                <div class="col-md-12">
+                    <div class="form h-100">
+                        <h3 style="text-align:center; font-style:italic; color:grey">Добави Издателство</h3>
+
+
+
+                        <form class="mb-5" method="post" id="inputForm" name="inputForm">
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="" class="col-form-label">Име на издател:  *</label>
+
+                                    @Html.TextBoxFor(p => p.name, new { @class = "form-control", @placeholder = "Въведи издател" })
+                                    @Html.ValidationMessageFor(p => p.name, "", new { @style = "color:red" })
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <input type="submit" value="Добави" class="btn btn-primary rounded-0 py-2 px-4">
+                                    <span class="submitting"></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<link href="~/Content/style_inputs.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Content/Panel/docs/assets/plugins/popper/esm/popper.min.js"></script>
+<script src="~/Content/main_input.js"></script>

@@ -1,0 +1,67 @@
+﻿@using LibrarySys.Models.Entity
+@model List<ReaderBorrow>
+@{
+    ViewBag.Title = "ReadedBooks";
+    Layout = "~/Views/Shared/LayoutReader.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header p-2">
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-pane" id="timeline">
+                                <!-- The timeline -->
+                                <div class="timeline timeline-inverse">
+                                    <!-- timeline time label -->
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="time-label">
+                                            <a class="btn btn-success">
+                                                <span class="bg-success">
+                                                    @(((DateTime)item.CheckoutDate).ToString("dd-MMM-yyyy"))
+                                                </span>
+                                            </a>
+                                            -----
+                                            <a class="btn btn-warning">
+                                                <span class="bg-warning">
+                                                    @if (item.ReturnReader == null)
+                                                    { item.ReturnReader = null; }
+                                                    else
+                                                    {
+                                                        @(((DateTime)item.ReturnReader).ToString("dd-MMM-yyyy"))}
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <!-- /.timeline-label -->
+                                        <!-- timeline item -->
+                                        <div>
+                                            <div class="timeline-item">
+                                                <div class="timeline-body">
+                                                    @item.Book.Title - @item.Book.Author.FirstName @item.Book.Author.LastName
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </section>
+</body>
+</html>
+
+

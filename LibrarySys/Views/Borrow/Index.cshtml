@@ -1,0 +1,85 @@
+﻿@using LibrarySys.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList<ReaderBorrow>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<html>
+<body>
+
+    <section class="main-content">
+        <div class="container">
+            <h2 style="text-align:center; font-style:italic"> Регистър на активни  </h2>
+
+            @using (Html.BeginForm("Index", "Borrow", FormMethod.Get))
+            {
+                <div style="margin-bottom:15px; margin-top:15px">
+                    <ion-icon name="search-outline">   </ion-icon> &nbsp @Html.TextBox("s")
+                    <input type="submit" value="Търсене" class="btn btn-primary btn-sm" />
+                </div>
+            }
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th># </th>
+                        <th>Книтага</th>
+                        <th>Читател</th>
+                        <th>Служител</th>
+                        <th>Дата на заемане</th>
+
+                        <th>Върни</th>
+                    </tr>
+                </thead>
+
+
+
+                @foreach (var item in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@item.ID_borrow</td>
+                            <td>@item.Book.Title &nbsp; @item.Book.Author.FirstName &nbsp; @item.Book.Author.LastName</td>
+                            <td>@item.Reader.FirstName &nbsp; @item.Reader.LastName</td>
+                            <td>@item.Employee.FirstName &nbsp; @item.Employee.LastName</td>
+                            <td>@Convert.ToDateTime(item.CheckoutDate).ToString("dd/MM/yyyy")</td>
+
+                            <td>
+                                <a href="~/Borrow/ReaderReturn/@item.ID_borrow" class="btn btn-primary btn-sm">Върни</a>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                }
+
+
+            </table>
+
+        </div>
+
+    </section>
+    <div>
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+    </div>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/Content/table style.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+

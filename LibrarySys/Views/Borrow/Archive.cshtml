@@ -1,0 +1,80 @@
+﻿@using LibrarySys.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList<ReaderBorrow>
+@{
+    ViewBag.Title = "Archive";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<html>
+<body>
+    <section class="main-content">
+        <div class="container">
+
+            <h1 style="text-align:center; font-style:italic"> Регистър на върнати книги </h1>
+
+            @using (Html.BeginForm("Archive", "Borrow", FormMethod.Get))
+            {
+                <div style="margin-bottom:15px; margin-top:15px">
+                    <ion-icon name="search-outline">   </ion-icon> &nbsp @Html.TextBox("s")
+                    <input type="submit" value="Търсене" class="btn btn-primary btn-sm" />
+                </div>
+            }
+
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th> # </th>
+                        <th> Заглавие </th>
+                        <th> Читател </th>
+                        <th>  Служител </th>
+                        <th> Дата на заемане на книга </th>
+                        <th> Дата на връщане на книга  </th>
+                        <th> Детайли </th>
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var bb in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td> @bb.ID_borrow </td>
+                            <td> @bb.ID_book </td>
+                            <td> @bb.Reader.FirstName &nbsp @bb.Reader.LastName</td>
+                            <td> @bb.Employee.FirstName &nbsp @bb.Employee.LastName </td>
+                            <td> @Convert.ToDateTime(bb.CheckoutDate).ToString("dd/MM/yyyy") </td>
+                            <td> @Convert.ToDateTime(bb.ReturnReader).ToString("dd/MM/yyyy") </td>
+
+                            <td>
+                                <a href="~/Borrow/ReturnBook/@bb.ID_borrow" class="btn btn-primary btn-sm"> Детайли </a>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                }
+
+            </table>
+        </div>
+    </section>
+    <div>
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Archive", new { page }))
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/Content/table style.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />

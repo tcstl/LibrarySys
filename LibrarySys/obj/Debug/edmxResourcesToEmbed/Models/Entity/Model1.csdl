@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibSysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="ID_author" />
+    </Key>
+    <Property Name="ID_author" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Books" Relationship="LibSysModel.FK_Book_Author" FromRole="Author" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="ID_book" />
+    </Key>
+    <Property Name="ID_book" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ID_genre" Type="Int32" />
+    <Property Name="ID_author" Type="Int32" />
+    <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="ID_publisher" Type="Int32" />
+    <Property Name="Pages" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Available" Type="Boolean" />
+    <NavigationProperty Name="Author" Relationship="LibSysModel.FK_Book_Author" FromRole="Book" ToRole="Author" />
+    <NavigationProperty Name="Genre" Relationship="LibSysModel.FK_Book_Genre" FromRole="Book" ToRole="Genre" />
+    <NavigationProperty Name="Publisher" Relationship="LibSysModel.FK_Book_Publisher" FromRole="Book" ToRole="Publisher" />
+    <NavigationProperty Name="ReaderBorrows" Relationship="LibSysModel.FK_ReaderBorrow_Book" FromRole="Book" ToRole="ReaderBorrow" />
+    <Property Name="Stock" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID_employee" />
+    </Key>
+    <Property Name="ID_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="News" Relationship="LibSysModel.FK_News_Employee" FromRole="Employee" ToRole="News" />
+    <NavigationProperty Name="ReaderBorrows" Relationship="LibSysModel.FK_ReaderBorrow_Employee" FromRole="Employee" ToRole="ReaderBorrow" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="ID_genre" />
+    </Key>
+    <Property Name="ID_genre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Books" Relationship="LibSysModel.FK_Book_Genre" FromRole="Genre" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID_news" />
+    </Key>
+    <Property Name="ID_news" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Article" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Screen" Type="Boolean" />
+    <Property Name="ID_employee" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Employee" Relationship="LibSysModel.FK_News_Employee" FromRole="News" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Publisher">
+    <Key>
+      <PropertyRef Name="ID_publisher" />
+    </Key>
+    <Property Name="ID_publisher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Books" Relationship="LibSysModel.FK_Book_Publisher" FromRole="Publisher" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="Reader">
+    <Key>
+      <PropertyRef Name="ID_reader" />
+    </Key>
+    <Property Name="ID_reader" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="School" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ReaderBorrows" Relationship="LibSysModel.FK_ReaderBorrow_Reader" FromRole="Reader" ToRole="ReaderBorrow" />
+    <Property Name="Activate" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ReaderBorrow">
+    <Key>
+      <PropertyRef Name="ID_borrow" />
+    </Key>
+    <Property Name="ID_borrow" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_reader" Type="Int32" />
+    <Property Name="ID_employee" Type="Int32" />
+    <Property Name="ID_book" Type="Int32" />
+    <Property Name="CheckoutDate" Type="DateTime" Precision="0" />
+    <Property Name="Process" Type="Boolean" />
+    <Property Name="ReturnReader" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Book" Relationship="LibSysModel.FK_ReaderBorrow_Book" FromRole="ReaderBorrow" ToRole="Book" />
+    <NavigationProperty Name="Employee" Relationship="LibSysModel.FK_ReaderBorrow_Employee" FromRole="ReaderBorrow" ToRole="Employee" />
+    <NavigationProperty Name="Reader" Relationship="LibSysModel.FK_ReaderBorrow_Reader" FromRole="ReaderBorrow" ToRole="Reader" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="LibSysEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Authors" EntityType="Self.Author" />
+    <EntitySet Name="Books" EntityType="Self.Book" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Genres" EntityType="Self.Genre" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="Publishers" EntityType="Self.Publisher" />
+    <EntitySet Name="Readers" EntityType="Self.Reader" />
+    <EntitySet Name="ReaderBorrows" EntityType="Self.ReaderBorrow" />
+    <EntitySet Name="sysdiagrams" EntityType="LibSysModel.sysdiagram" />
+    <AssociationSet Name="FK_Book_Author" Association="LibSysModel.FK_Book_Author">
+      <End Role="Author" EntitySet="Authors" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_Genre" Association="LibSysModel.FK_Book_Genre">
+      <End Role="Genre" EntitySet="Genres" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_Publisher" Association="LibSysModel.FK_Book_Publisher">
+      <End Role="Publisher" EntitySet="Publishers" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReaderBorrow_Book" Association="LibSysModel.FK_ReaderBorrow_Book">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="ReaderBorrow" EntitySet="ReaderBorrows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_News_Employee" Association="LibSysModel.FK_News_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReaderBorrow_Employee" Association="LibSysModel.FK_ReaderBorrow_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="ReaderBorrow" EntitySet="ReaderBorrows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReaderBorrow_Reader" Association="LibSysModel.FK_ReaderBorrow_Reader">
+      <End Role="Reader" EntitySet="Readers" />
+      <End Role="ReaderBorrow" EntitySet="ReaderBorrows" />
+    </AssociationSet>
+    <FunctionImport Name="Top10Author" ReturnType="Collection(LibSysModel.Top10Author_Result)" />
+    <FunctionImport Name="Top10ReadedBook" ReturnType="Collection(LibSysModel.Top10ReadedBook_Result)" />
+    <FunctionImport Name="Top10Reader" ReturnType="Collection(LibSysModel.Top10Reader_Result)" />
+  </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Book_Author">
+    <End Type="LibSysModel.Author" Role="Author" Multiplicity="0..1" />
+    <End Type="LibSysModel.Book" Role="Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Author">
+        <PropertyRef Name="ID_author" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="ID_author" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_Genre">
+    <End Type="LibSysModel.Genre" Role="Genre" Multiplicity="0..1" />
+    <End Type="LibSysModel.Book" Role="Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="ID_genre" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="ID_genre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_Publisher">
+    <End Type="LibSysModel.Publisher" Role="Publisher" Multiplicity="0..1" />
+    <End Type="LibSysModel.Book" Role="Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="ID_publisher" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="ID_publisher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReaderBorrow_Book">
+    <End Type="LibSysModel.Book" Role="Book" Multiplicity="0..1" />
+    <End Type="LibSysModel.ReaderBorrow" Role="ReaderBorrow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="ID_book" />
+      </Principal>
+      <Dependent Role="ReaderBorrow">
+        <PropertyRef Name="ID_book" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_News_Employee">
+    <End Type="LibSysModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="LibSysModel.News" Role="News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_employee" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="ID_employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReaderBorrow_Employee">
+    <End Type="LibSysModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="LibSysModel.ReaderBorrow" Role="ReaderBorrow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_employee" />
+      </Principal>
+      <Dependent Role="ReaderBorrow">
+        <PropertyRef Name="ID_employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReaderBorrow_Reader">
+    <End Type="LibSysModel.Reader" Role="Reader" Multiplicity="0..1" />
+    <End Type="LibSysModel.ReaderBorrow" Role="ReaderBorrow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reader">
+        <PropertyRef Name="ID_reader" />
+      </Principal>
+      <Dependent Role="ReaderBorrow">
+        <PropertyRef Name="ID_reader" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="AuthorTop10_Result">
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="60" />
+    <Property Type="Int32" Name="Книги" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ReadedBookTop10_Result">
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Най_много_четена_книга" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ReaderTop10_Result">
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="60" />
+    <Property Type="Int32" Name="Брой_книги" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Top10Author_Result">
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Книги" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Top10ReadedBook_Result">
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Най_много_четена_книга" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Top10Reader_Result">
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Брой_книги" Nullable="true" />
+  </ComplexType>
+</Schema>

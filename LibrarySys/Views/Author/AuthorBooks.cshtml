@@ -1,0 +1,51 @@
+﻿@using LibrarySys.Models.Entity
+@model List<Book>
+@{
+    ViewBag.Title = "AuthorBooks";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<html>
+<body>
+    <section class="main-content">
+        <div class="container">
+
+            <h2 style="text-align:center; font-style:italic">@ViewBag.a</h2>
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Заглавие на книгата</th>
+                        <th>Категория</th>
+                        <th>Издателство</th>
+                    </tr>
+                </thead>
+                @foreach (var x in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@x.ID_book</td>
+                            <td>@x.Title</td>
+                            <td>@x.Genre.name</td>
+                            <td>@x.Publisher.name</td>
+                        </tr>
+                    </tbody>
+                }
+
+            </table>
+        </div>
+    </section>
+</body>
+</html>
+
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/Content/table style.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+

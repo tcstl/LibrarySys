@@ -1,0 +1,101 @@
+﻿@model LibrarySys.Models.Entity.Book
+@{
+    ViewBag.Title = "AddBook";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<html>
+<body>
+    <div class="content">
+        <div class="container">
+            <div class="row align-items-stretch no-gutters input-wrap">
+                <div class="col-md-12">
+                    <div class="form h-100">
+                        <h3 style="text-align:center; font-style:italic; color:grey">Добави Книга</h3>
+                        <form class="mb-5" method="post" id="inputForm" name="inputForm">
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="" class="col-form-label">Заглавие  *</label>
+
+                                    @Html.TextBoxFor(b => b.Title, new { @class = "form-control", @placeholder = "Въведи името на книгата" })
+                                    @Html.ValidationMessageFor(b => b.Title, "", new { @style = "color:red" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label"> Автор  *</label>
+
+                                    @Html.DropDownListFor(b => b.ID_author, (IEnumerable<SelectListItem>)ViewBag.a, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(b => b.ID_author, "", new { @style = "color:red" })
+                                </div>
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label"> Брой  *</label>
+
+                                    @Html.TextBoxFor(b => b.Stock, new { @class = "form-control", @placeholder = "Въведи брой." })
+                                    @Html.ValidationMessageFor(b => b.Stock, "", new { @style = "color:red" })
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label">Жанр   *</label>
+                                    @Html.DropDownListFor(b => b.ID_genre, (List<SelectListItem>)ViewBag.c, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(b => b.ID_genre, "", new { @style = "color:red" })
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label"> Издателство   *</label>
+
+
+                                    @Html.DropDownListFor(b => b.ID_publisher, (List<SelectListItem>)ViewBag.p, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(b => b.ID_publisher, "", new { @style = "color:red" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label">Година  *</label>
+
+                                    @Html.TextBoxFor(b => b.Year, new { @class = "form-control", @placeholder = "Въведи годината на издаване" })
+                                    @Html.ValidationMessageFor(b => b.Year, "", new { @style = "color:red" })
+
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="" class="col-form-label">Страници *</label>
+                                    @Html.TextBoxFor(b => b.Pages, new { @class = "form-control", @placeholder = "Въведи брой страници на книгата" })
+                                    @Html.ValidationMessageFor(b => b.Pages, "", new { @style = "color:red" })
+
+                                </div>
+
+                            </div>
+
+                            <input type="hidden" name="Available" value="True" />
+
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <input type="submit" value="Добави" class="btn btn-primary rounded-0 py-2 px-4">
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<link href="~/Content/style_inputs.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Content/Panel/docs/assets/plugins/popper/esm/popper.min.js"></script>
+<script src="~/Content/main_input.js"></script>
+<link href="~/Content/chosen.css" rel="stylesheet" />
+<script src="~/Scripts/chosen.jquery.js"></script>
+<script src="~/Scripts/chosen.jquery.min.js"></script>
+
